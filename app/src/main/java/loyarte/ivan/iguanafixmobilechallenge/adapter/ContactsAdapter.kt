@@ -11,7 +11,7 @@ import kotlinx.android.synthetic.main.contact_item.view.*
 import loyarte.ivan.iguanafixmobilechallenge.R
 import loyarte.ivan.iguanafixmobilechallenge.domain.Contact
 
-class ContactsAdapter(private val mContacts: List<Contact>?): RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
+class ContactsAdapter(private var mContacts: List<Contact>): RecyclerView.Adapter<ContactsAdapter.ViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
@@ -30,18 +30,16 @@ class ContactsAdapter(private val mContacts: List<Contact>?): RecyclerView.Adapt
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        if (mContacts != null) {
-            val item = mContacts[position]
-            holder.mName.text = item.last_name + ", " + item.first_name
-            with(holder.mView) {
-                tag = item
-                setOnClickListener(mOnClickListener)
-            }
+        val item = mContacts[position]
+        holder.mName.text = item.last_name + ", " + item.first_name
+        with(holder.mView) {
+            tag = item
+            setOnClickListener(mOnClickListener)
         }
     }
 
     override fun getItemCount(): Int {
-        return mContacts?.size ?: 0
+        return mContacts.size
     }
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
@@ -51,5 +49,12 @@ class ContactsAdapter(private val mContacts: List<Contact>?): RecyclerView.Adapt
 //        override fun toString(): String {
 //            return super.toString() + " '" + mContentView.text + "'"
 //        }
+    }
+
+    fun setData(contacts :List<Contact>?){
+        if (contacts != null) {
+            mContacts = contacts
+            notifyDataSetChanged()
+        }
     }
 }
