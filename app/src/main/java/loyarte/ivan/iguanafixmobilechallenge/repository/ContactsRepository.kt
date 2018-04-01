@@ -10,6 +10,10 @@ class ContactsRepository() {
     fun getContacts(): Observable<List<Contact>> {
         return apiService.getContacts()
     }
+
+    fun getContactDetails(contactId: Int): Observable<Contact> {
+        return apiService.getContactDetails(contactId)
+    }
 }
 
 object ContactsRepositoryProvider {

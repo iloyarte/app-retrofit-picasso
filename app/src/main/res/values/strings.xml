@@ -3,4 +3,5 @@
 
     <!-- Contacts Fragment-->
     <string name="contacts_fragment_title">Contactos</string>
+    <string name="connection_error">No posee conexion a internet.</string>
 </resources>

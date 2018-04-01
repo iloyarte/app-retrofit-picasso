@@ -6,6 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.http.GET
+import retrofit2.http.Path
 
 
 interface ContactsApiService {
@@ -13,12 +14,9 @@ interface ContactsApiService {
     @GET("contacts")
     fun getContacts() : Observable<List<Contact>>
 
-    @GET("contacts/id")
-    fun getContactDetails() :Observable<Contact>
+    @GET("contacts/{id}")
+    fun getContactDetails(@Path("id") id: Int) :Observable<Contact>
 
-    /**
-     * Companion object to create the GithubApiService
-     */
     companion object Factory {
         fun create(): ContactsApiService {
             val retrofit = Retrofit.Builder()
