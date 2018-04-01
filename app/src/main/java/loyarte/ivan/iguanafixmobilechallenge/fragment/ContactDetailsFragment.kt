@@ -6,9 +6,6 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
-import kotlinx.android.synthetic.main.fragment_contact_details.*
 import loyarte.ivan.iguanafixmobilechallenge.R
 import loyarte.ivan.iguanafixmobilechallenge.domain.Contact
 import loyarte.ivan.iguanafixmobilechallenge.repository.ContactsRepositoryProvider
@@ -39,17 +36,10 @@ class ContactDetailsFragment : Fragment() {
 
     private fun populate() {
         val repository = ContactsRepositoryProvider.provideContactsRepository()
-        repository.getContactDetails(contactID)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe ({
-                    result ->
-                    // Set adapter and render list
+        repository.getContactDetails(contactID, {
+            // Populate
+        })
 
-
-                }, { error ->
-                    error.printStackTrace()
-                })
     }
 
 

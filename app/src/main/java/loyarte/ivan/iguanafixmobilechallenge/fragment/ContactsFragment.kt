@@ -81,21 +81,14 @@ class ContactsFragment : Fragment() {
 
     private fun populate() {
         val repository = ContactsRepositoryProvider.provideContactsRepository()
-        repository.getContacts()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe ({
-                    result ->
-                    // Set adapter and render list
-                    dataset = result
-                    with(contactList) {
-                        layoutManager = this@ContactsFragment.layoutManager
-                        adapter = ContactsAdapter(this@ContactsFragment.activity as MainActivity, dataset)
-                    }
-                }, { error ->
-                    error.printStackTrace()
-                    Toast.makeText(activity,R.string.connection_error,Toast.LENGTH_SHORT).show()
-                })
+        repository.getContacts({
+            // Set adapter and render list
+            dataset = it
+            with(contactList) {
+                layoutManager = this@ContactsFragment.layoutManager
+                adapter = ContactsAdapter(this@ContactsFragment.activity as MainActivity, dataset)
+            }
+        })
 
     }
 
