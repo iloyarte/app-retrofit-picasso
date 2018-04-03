@@ -14,13 +14,17 @@ data class Contact(
 )
 
 data class ContactPhone(
-        val type: String,
-        val number: String
+        val type: String = "",
+        val number: String = ""
 )
 
 data class ContactAddress(
-        val home: String,
-        val work: String
-)
+        val home: String = "",
+        val work: String = ""
+) {
+    fun isNullOrEmpty() : Boolean{
+        return home.isNullOrEmpty() && work.isNullOrEmpty()
+    }
+}
 
 

@@ -22,6 +22,7 @@
             <TextView
                 android:id="@+id/title"
                 android:text="@string/contacts_fragment_title"
+                android:textSize="16sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"

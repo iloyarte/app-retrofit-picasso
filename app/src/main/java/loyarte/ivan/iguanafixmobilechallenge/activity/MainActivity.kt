@@ -4,13 +4,16 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
+import kotlinx.android.synthetic.main.fragment_contacts.*
 import loyarte.ivan.iguanafixmobilechallenge.R
+import loyarte.ivan.iguanafixmobilechallenge.adapter.ContactsAdapter
 import loyarte.ivan.iguanafixmobilechallenge.fragment.ContactDetailsFragment
 import loyarte.ivan.iguanafixmobilechallenge.fragment.ContactsFragment
 
 class MainActivity : AppCompatActivity() {
 
     private var currentFragment : Fragment? = null
+    var detailsOpened : Boolean = false
     private val contactsFragment : ContactsFragment = ContactsFragment.newInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,7 @@ class MainActivity : AppCompatActivity() {
             (currentFragment as ContactsFragment).back()
         } else {
             supportFragmentManager.popBackStack()
+            detailsOpened = false
         }
     }
 

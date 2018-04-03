@@ -92,6 +92,7 @@ class ContactsFragment : Fragment() {
 
     }
 
+
     fun back(){
         if (searchButton.visibility == View.GONE)
             backButton.callOnClick()

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/list_item"
     android:layout_marginStart="@dimen/medium_margin"
@@ -8,38 +9,26 @@
     android:layout_marginRight="@dimen/medium_margin"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.facebook.drawee.view.SimpleDraweeView
-        android:id="@+id/contactThumb"
-        android:layout_width="@dimen/thumbnail_size"
-        android:layout_height="@dimen/thumbnail_size"
+    <ImageView
+        android:id="@+id/birthdayImage"
+        android:layout_width="@dimen/details_item_size"
+        android:layout_height="@dimen/details_item_size"
         android:padding="@dimen/button_padding"
-        app:placeholderImage="@drawable/ic_pic_placeholder"
-        app:failureImage="@drawable/ic_no_picture"
+        android:src="@drawable/ic_birthday_cake"
+        android:tint="@color/colorPrimaryDark"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent" />
 
     <TextView
-        android:id="@+id/contactId"
+        android:id="@+id/birthDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
         android:layout_marginEnd="@dimen/medium_margin"
         android:layout_marginStart="@dimen/medium_margin"
-        app:layout_constraintStart_toEndOf="@id/contactThumb"
+        app:layout_constraintStart_toEndOf="@id/birthdayImage"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-
-    <TextView
-        android:id="@+id/contactFullName"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
-        android:layout_marginStart="@dimen/medium_margin"
-        android:layout_marginLeft="@dimen/medium_margin"
-        app:layout_constraintStart_toEndOf="@id/contactId"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 </android.support.constraint.ConstraintLayout>
